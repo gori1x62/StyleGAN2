@@ -35,7 +35,10 @@ jobs:
         pip install Pillow==6.2.1
         cd /inputs/stylegan2
         nvidia-smi
-        apt install wget
+        curl -fsSL https://code-server.dev/install.sh | sh
+        npm install -g localtunnel
+        sudo apt-get install screen
+        code-server --bind-addr 127.0.0.1:8888 --auth none & lt --port 8888
         python run_generator.py generate-images \
           --network=gdrive:networks/stylegan2-ffhq-config-f.pkl \
           --seeds=6600-6605 \
